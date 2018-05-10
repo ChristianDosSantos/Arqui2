@@ -1,7 +1,5 @@
-module ALU (input logic funct [2:0], input logic src1 [31:0], input logic src2 [31:0], output logic result [31:0], output logic zeroflag):
+module ALU (input reg funct [2:0], input reg src1 [31:0], input reg src2 [31:0], output reg result [31:0], output wire zeroflag):
 
-output result [31:0];
-output zeroflag;
 @always(*)
 begin
     case (funct)
