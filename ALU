@@ -3,6 +3,7 @@ module ALU (input logic funct [2:0], input logic src1 [31:0], input logic src2 [
 output result [31:0];
 output zeroflag;
 @always(*)
+begin
     case (funct)
         3'b000: result = src1 + src2;
         3'b001: result = src1 - src2;
@@ -13,6 +14,7 @@ output zeroflag;
         3'b100: result = src1>>src2;
         3'b101: result = {src1[31],(src1[31:1]>>(src2-1))};
     endcase
+end 
 
 assign zeroflag = src1==src2;
 
