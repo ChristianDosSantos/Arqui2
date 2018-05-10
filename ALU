@@ -1,0 +1,19 @@
+module ALU (input logic funct [2:0], input logic src1 [31:0], input logic src2 [31:0], output logic result [31:0], output logic zeroflag):
+
+output result [31:0];
+output zeroflag;
+@always(*)
+    case (funct)
+        3'b000: result = src1 + src2;
+        3'b001: result = src1 - src2;
+        3'b111: result = src1 & src2;
+        3'b110: result = src1 | src2;
+        3'b011: result = src1 ^ src2;
+        3'b010: result = src1<<src2;
+        3'b100: result = src1>>src2;
+        3'b101: result = {src1[31],(src1[31:1]>>(src2-1))};
+    endcase
+
+assign zeroflag = src1==src2;
+
+endmodule
